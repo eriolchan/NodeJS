@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  section#wrapper
+    h2 Basic Structure
+    section
+      p
+        span This is a span within a p within a div!
+  
+  h2 variables
+  - var name = "Eric"
+  h3 Hello #{name}!
+
+  h2 loops
+  - users = ['Sally', 'Joseph', 'Michael', 'Sanjay']
+  - each user in users
+    p= user
+
+  - obj = { first_name: 'George', surname: 'Ornbo' }
+  - each val, key in obj
+    li #{key}: #{val}
+
+  - beatles = ['John', 'Paul', 'Ringo', 'George']
+  ul
+    each beatle in beatles
+      li #{beatle}
+
+  h2 conditions
+  - raining = false
+  - if (raining)
+    p It is raining. Take an umbrella!
+  - else
+    p No rain. Take the bike!
+
+  h2 inline javascript
+  script
+    alert('Inline JavaScript in Jade')
+
+  h2 Jade Includes Example
+  include includes/footer
+
+  h2 mixins
+  mixin users(users)
+    ul
+      each user in users
+        li= user
+  
+  - users = ['Tanya', 'Jose', 'Kim']
+  mixin users(users)
+  - more_users = ['Mark', 'Elena', 'Dave', 'Pete', 'Keiron']
+  mixin users(more_users)
