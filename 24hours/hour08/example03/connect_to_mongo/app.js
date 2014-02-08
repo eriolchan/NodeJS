@@ -17,7 +17,7 @@ var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
 var Task = new Schema({
-    task: String
+    task: { type: String, required: true },
 });
 
 var Task = mongoose.model('Task', Task);
@@ -62,6 +62,7 @@ app.post('/tasks', function(req, res) {
         if (!err) {
             res.redirect('/tasks');
         } else {
+            console.log(err);
             res.redirect('/tasks/new');
         }
     });
